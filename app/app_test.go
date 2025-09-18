@@ -8,7 +8,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/joncalhoun/twg/app"
+	"github.com/OctaviPascual/twg/app"
 	"golang.org/x/net/publicsuffix"
 )
 

@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/joncalhoun/twg/logger"
+	"github.com/OctaviPascual/twg/logger"
 )
 
 type fakeLogger struct {

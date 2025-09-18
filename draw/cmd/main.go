@@ -6,7 +6,7 @@ import (
 	"image/png"
 	"os"
 
-	"github.com/joncalhoun/twg/draw"
+	"github.com/OctaviPascual/twg/draw"
 )
 
 func main() {

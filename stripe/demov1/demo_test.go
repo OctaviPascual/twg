@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"testing"
 
-	stripe "github.com/joncalhoun/twg/stripe/v1"
+	stripe "github.com/OctaviPascual/twg/stripe/v1"
 )
 
 type App struct {

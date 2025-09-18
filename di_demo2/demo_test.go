@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/joncalhoun/twg/di_demo2"
+	"github.com/OctaviPascual/twg/di_demo2"
 )
 
 func TestThing_SomeFunc(t *testing.T) {

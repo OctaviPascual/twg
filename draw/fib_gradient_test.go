@@ -6,7 +6,7 @@ import (
 	"image/draw"
 	"testing"
 
-	twgdraw "github.com/joncalhoun/twg/draw"
+	twgdraw "github.com/OctaviPascual/twg/draw"
 )
 
 func TestFibGradient(t *testing.T) {

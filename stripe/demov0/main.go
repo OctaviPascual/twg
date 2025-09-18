@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	stripe "github.com/joncalhoun/twg/stripe/v0"
+	stripe "github.com/OctaviPascual/twg/stripe/v0"
 )
 
 func main() {

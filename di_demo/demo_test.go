@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/joncalhoun/twg/di_demo"
+	"github.com/OctaviPascual/twg/di_demo"
 )
 
 type fakeLogger struct {
