@@ -3,7 +3,7 @@ package stripe
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strconv"
@@ -73,7 +73,7 @@ func (c *Client) Customer(token, email string) (*Customer, error) {
 		return nil, err
 	}
 	defer res.Body.Close()
-	body, err := ioutil.ReadAll(res.Body)
+	body, err := io.ReadAll(res.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -103,7 +103,7 @@ func (c *Client) Charge(customerID string, amount int) (*Charge, error) {
 		return nil, err
 	}
 	defer res.Body.Close()
-	body, err := ioutil.ReadAll(res.Body)
+	body, err := io.ReadAll(res.Body)
 	if err != nil {
 		return nil, err
 	}

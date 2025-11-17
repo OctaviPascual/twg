@@ -6,7 +6,7 @@ import (
 	"image"
 	"image/draw"
 	"image/png"
-	"io/ioutil"
+	"io"
 	"os"
 	"testing"
 
@@ -41,10 +41,10 @@ func TestFibGradient(t *testing.T) {
 	if err != nil {
 		t.Fatalf("os.Open() err = %s; want nil", err)
 	}
-	want, err := ioutil.ReadAll(f)
+	want, err := io.ReadAll(f)
 	f.Close()
 	if err != nil {
-		t.Fatalf("ioutil.ReadAll() err = %s; want nil", err)
+		t.Fatalf("io.ReadAll() err = %s; want nil", err)
 	}
 	got := bytes.NewBuffer(nil)
 	png.Encode(got, im)

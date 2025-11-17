@@ -2,7 +2,7 @@ package stripe
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strconv"
@@ -46,7 +46,7 @@ func (c *Client) Charge(amount int, source, desc string) (*Charge, error) {
 		return nil, err
 	}
 	defer res.Body.Close()
-	resBytes, err := ioutil.ReadAll(res.Body)
+	resBytes, err := io.ReadAll(res.Body)
 	if err != nil {
 		return nil, err
 	}

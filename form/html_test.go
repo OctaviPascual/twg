@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"html/template"
-	"io/ioutil"
+	"io"
 	"os"
 	"strings"
 	"testing"
@@ -130,7 +130,7 @@ func readFile(t *testing.T, filename string) []byte {
 		t.Fatalf("Error opening file %s: %v", filename, err)
 	}
 	defer f.Close()
-	b, err := ioutil.ReadAll(f)
+	b, err := io.ReadAll(f)
 	if err != nil {
 		t.Fatalf("Error reading file %s: %v", filename, err)
 	}

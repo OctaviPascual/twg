@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"os"
@@ -135,7 +135,7 @@ func readResponse(t *testing.T, count int) response {
 		t.Fatalf("failed to open the response file: %s. err = %v", path, err)
 	}
 	defer f.Close()
-	jsonBytes, err := ioutil.ReadAll(f)
+	jsonBytes, err := io.ReadAll(f)
 	if err != nil {
 		t.Fatalf("failed to read the response file: %s. err = %v", path, err)
 	}

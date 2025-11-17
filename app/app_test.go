@@ -2,7 +2,6 @@ package app_test
 
 import (
 	"io"
-	"io/ioutil"
 	"net/http"
 	"net/http/cookiejar"
 	"net/http/httptest"
@@ -19,9 +18,9 @@ func TestHome(t *testing.T) {
 
 	resp := w.Result()
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		t.Errorf("ioutil.ReadAll() err = %s; want nil", err)
+		t.Errorf("io.ReadAll() err = %s; want nil", err)
 	}
 	got := string(body)
 	want := "<h1>Welcome!</h1>"
@@ -39,9 +38,9 @@ func TestApp_v1(t *testing.T) {
 		t.Fatalf("GET / err = %s; want nil", err)
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		t.Errorf("ioutil.ReadAll() err = %s; want nil", err)
+		t.Errorf("io.ReadAll() err = %s; want nil", err)
 	}
 	got := string(body)
 	want := "<h1>Welcome!</h1>"
@@ -54,7 +53,7 @@ func signedInClient(t *testing.T, baseURL string) *http.Client {
 	// Our cookiejar will keep and set cookies for us between requests.
 	jar, err := cookiejar.New(&cookiejar.Options{PublicSuffixList: publicsuffix.List})
 	if err != nil {
-		t.Fatalf("cookejar.New() err = %s; want nil", err)
+		t.Fatalf("cookiejar.New() err = %s; want nil", err)
 	}
 	client := &http.Client{
 		Jar: jar,
@@ -116,9 +115,9 @@ func TestApp_v2(t *testing.T) {
 			t.Fatalf("GET /admin err = %s; want nil", err)
 		}
 		defer resp.Body.Close()
-		body, err := ioutil.ReadAll(resp.Body)
+		body, err := io.ReadAll(resp.Body)
 		if err != nil {
-			t.Errorf("ioutil.ReadAll() err = %s; want nil", err)
+			t.Errorf("io.ReadAll() err = %s; want nil", err)
 		}
 		got := string(body)
 		want := "<h1>Welcome to the admin page!</h1>"

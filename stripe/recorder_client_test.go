@@ -2,7 +2,7 @@ package stripe_test
 
 import (
 	"bytes"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"testing"
 )
@@ -24,7 +24,7 @@ func (rc *recorderClient) Do(req *http.Request) (*http.Response, error) {
 		rc.t.Fatalf("http request failed. err = %v", err)
 	}
 	defer res.Body.Close()
-	body, err := ioutil.ReadAll(res.Body)
+	body, err := io.ReadAll(res.Body)
 	if err != nil {
 		rc.t.Fatalf("failed to read the response body. err = %v", err)
 	}
@@ -32,6 +32,6 @@ func (rc *recorderClient) Do(req *http.Request) (*http.Response, error) {
 		StatusCode: res.StatusCode,
 		Body:       body,
 	})
-	res.Body = ioutil.NopCloser(bytes.NewReader(body))
+	res.Body = io.NopCloser(bytes.NewReader(body))
 	return res, err
 }

@@ -2,7 +2,7 @@ package stripe
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strconv"
@@ -21,12 +21,12 @@ type Client struct {
 	Key string
 }
 
-// curl https://api.stripe.com/v1/charges \
-//    -u sk_test_4eC39HqLyjWDarjtT1zdp7dc: \
-//    -d amount=2000 \
-//    -d currency=usd \
-//    -d source=tok_mastercard \
-//    -d description="Charge for jenny.rosen@example.com"
+//	curl https://api.stripe.com/v1/charges \
+//	   -u sk_test_4eC39HqLyjWDarjtT1zdp7dc: \
+//	   -d amount=2000 \
+//	   -d currency=usd \
+//	   -d source=tok_mastercard \
+//	   -d description="Charge for jenny.rosen@example.com"
 func (c *Client) Charge(amount int, source, desc string) (*Charge, error) {
 	v := url.Values{}
 	v.Set("amount", strconv.Itoa(amount))
@@ -44,7 +44,7 @@ func (c *Client) Charge(amount int, source, desc string) (*Charge, error) {
 		return nil, err
 	}
 	defer res.Body.Close()
-	resBytes, err := ioutil.ReadAll(res.Body)
+	resBytes, err := io.ReadAll(res.Body)
 	if err != nil {
 		return nil, err
 	}
